@@ -2,16 +2,10 @@ from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
 
-@given('Open target main page')
-def open_target(context):
-    context.driver.get('https://www.target.com/')
+# @given('Open target main page')
+# def open_target(context):
+#     context.driver.get('https://www.target.com/')
 
-@when('Click Sign In')
-def click_sign_in(context):
-    context.driver.find_element(By.CSS_SELECTOR, 'span[class*="styles__LinkText-sc-1e1g60c-3 dZfgoT h-margin-r-x3"]').click()
-@when('From right wide navigation menu, click Sign In')
-def navigation_menu(context):
-    context.driver.find_element(By.CSS_SELECTOR,'a[href="/account"][data-test="accountNav-signIn"]').click()
 
 @then('Verify Sign In form opened')
 def verify_search(context):
