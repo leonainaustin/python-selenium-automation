@@ -12,16 +12,19 @@ def open_target(context):
 
 
 
-@then('Add a mug into cart')
-def add_cart(context):
-    context.driver.find_element(By.CSS_SELECTOR, "#addToCartButtonOrTextIdFor13891751").click()
+@then('Click on add to cart first product')
+def add_cart_first_product(context):
+    context.driver.find_element(By.CSS_SELECTOR, "#addToCartButtonOrTextIdFor14062461").click()
+    sleep(3)
 
-@then('Click on the cart')
-def cart_click(context):
-    context.driver.find_element(By.CSS_SELECTOR, 'image[href*="https://assets.targetimg1.com/icons/assets/glyph/Cart.svg#Cart"]').click()
-@then('Verify cart item {expected_keyword}')
-def verify_cart(context, expected_keyword):
+@then('Click on View cart and Check out')
+def view_cart(context):
+    context.driver.find_element(By.CSS_SELECTOR, "[href='/cart']").click()
+    sleep(2)
+@then('Verify cart')
+def verify_cart(context):
 
     expected_keyword = "1 item"
-    result = context.driver.find_element(By.CSS_SELECTOR, "[class*=styles__CartSummarySpan-sc-odscpb-3]")
-    assert expected_keyword in result,f'Expected{expected_keyword} not in {result}'
+    #expected_keyword= int(expected_keyword)
+    result = context.driver.find_element(By.CSS_SELECTOR, "[href*='#Order%20Summary%20$22.71%20total,%201%20item%20']")
+    assert expected_keyword in result,f'Expected{expected_keyword} not in  {result}'

@@ -3,7 +3,7 @@
 #
    Scenario: User can add product in cart
      Given Open target home page
-     When Search for mug
-     Then Add a mug into cart
-    And Click on the cart
-     And Verify cart item 1
+     When Search for black mouse
+     Then Click on add to cart first product
+     And Click on View cart and Check out
+     And Verify cart
