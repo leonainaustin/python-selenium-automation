@@ -2,21 +2,18 @@ from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
 
-SEARCH_FIELD = (By.ID, 'search')
-SEARCH_BTN = (By.CSS_SELECTOR, "[data-test='@web/Search/SearchButton']")
+
 HEADER = (By.CSS_SELECTOR, '[class*="UtilityHeaderWrapper"]')
 HEADER_LINKS = (By.CSS_SELECTOR, '[class*="UtilityHeaderWrapper"] a')
 
 
 @given('Open target main page')
 def open_target(context):
-    context.driver.get('https://www.target.com/')
+    context.app.main_page.open_main()
 
 @when('Search for {product}')
 def search_product(context, product):
-    context.driver.find_element(*SEARCH_FIELD).send_keys(product)
-    context.driver.find_element(*SEARCH_BTN).click()
-    sleep(6)  # wait for ads to disappear
+    context.app.main_page.search(product)
 
 @when('Click Sign In')
 def click_sign_in(context):
@@ -37,3 +34,12 @@ def verify_header_links(context, number):
     print(links)
     assert len(links) == number, f'Expectet {number} links, but got {len(links)}'
 
+@when('Click on your cart')
+def search_product(context):
+    context.app.main_page.click_cart()
+
+
+
+@then('Verify "Your cart is empty" text is shown')
+def verify_search(context):
+    context.app.cart_page.verify_cart_empty()

@@ -28,3 +28,4 @@ def verify_cart(context):
     #expected_keyword= int(expected_keyword)
     result = context.driver.find_element(By.CSS_SELECTOR, "[href*='#Order%20Summary%20$22.71%20total,%201%20item%20']")
     assert expected_keyword in result,f'Expected{expected_keyword} not in  {result}'
+
