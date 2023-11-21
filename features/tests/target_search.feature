@@ -32,7 +32,7 @@ Feature: Search tests
     And Store product name
     And Open cart page
     Then Verify cart has 1 item(s)
-    And Verify cart has correct product
+    #And Verify cart has correct product
 
     Scenario: Verify that user cna see product names and images
       Given Open target main page

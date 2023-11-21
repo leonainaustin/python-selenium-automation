@@ -12,19 +12,17 @@ PRODUCT_TITLE=(By.CSS_SELECTOR, '[data-test="product-title"]')
 PRODUCT_IMG= (By.CSS_SELECTOR, '[class*="ProductCardImage"]')
 @when('Click on Add to Cart button')
 def click_add_to_cart(context):
-    context.driver.find_element(*ADD_TO_CART_BTN).click()  # find_element by default it will pick 1st one
-    # all_buttons = context.driver.find_elements(*ADD_TO_CART_BTN)
-    # all_buttons[2].click()
+    context.app.search_results_page.click_add_to_cart()
 
 
 @when('Store product name')
 def store_product_name(context):
-    context.driver.wait.until(
-        EC.visibility_of_element_located(SIDE_NAV_PRODUCT_NAME),
-        message='Product name not shown in side navigation'
-    )
-    context.product_name = context.driver.find_element(*SIDE_NAV_PRODUCT_NAME).text
-
+    # context.driver.wait.until(
+    #     EC.visibility_of_element_located(SIDE_NAV_PRODUCT_NAME),
+    #     message='Product name not shown in side navigation'
+    # )
+    # context.product_name = context.driver.find_element(*SIDE_NAV_PRODUCT_NAME).text
+    context.app.search_results_page.store_product_name()
 
 @then('Verify search worked for {product}')
 def verify_search(context, product):

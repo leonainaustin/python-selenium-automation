@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from behave import given, when, then
 from time import sleep
 
@@ -17,10 +18,12 @@ def search_product(context, product):
 
 @when('Click Sign In')
 def click_sign_in(context):
-    context.driver.find_element(By.CSS_SELECTOR, 'span[class*="styles__LinkText-sc-1e1g60c-3 dZfgoT h-margin-r-x3"]').click()
+    context.app.main_page.click_signin()
+
+
 @when('From right wide navigation menu, click Sign In')
 def navigation_menu(context):
-    context.driver.find_element(By.CSS_SELECTOR,'a[href="/account"][data-test="accountNav-signIn"]').click()
+    context.app.main_page.right_wide_menu_click_signin()
 
 @then('Verify header is present')
 def verify_header_present(context):
